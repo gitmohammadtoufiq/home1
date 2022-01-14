@@ -16,6 +16,7 @@ public class Frame {
 		driver.manage().window().maximize();
 		
 		Thread.sleep(2000);
+		
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@src='/resources/demos/selectable/default.html']")));
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//li[ text()='Item 4']")).click();

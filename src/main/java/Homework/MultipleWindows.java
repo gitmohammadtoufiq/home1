@@ -20,15 +20,17 @@ public class MultipleWindows {
 		Thread.sleep(2000);
 		
 		Set<String> window_handles=driver.getWindowHandles();//in list you can have duplicate elements but in set you can't have duplicate elements
-		System.out.println(window_handles);
+//		System.out.println(window_handles);
 		
 		
 		Iterator<String> iterator=window_handles.iterator();
 		String parentwindow=iterator.next();
 		
 		String childwindow=iterator.next();
+		
 		driver.switchTo().window(childwindow);
 		Thread.sleep(4000);
+		
 		driver.findElement(By.name("UserFirstName")).sendKeys("Mohammad");
 		driver.findElement(By.name("UserLastName")).sendKeys("Toufiq");
 		Thread.sleep(3000);

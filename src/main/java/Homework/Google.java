@@ -1,5 +1,7 @@
 package Homework;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -53,9 +55,61 @@ public class Google {
 		himel.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
 		//find all the links
-		List<WebElement>link_names=himel.findElements(By.tagName("a"));
-		int link_count=link_names.size();
-		System.out.println("Total number of links are: "+link_count);
+		List<WebElement> links=himel.findElements(By.tagName("a"));
+		
+		System.out.println("Total links are "+links.size());
+		
+		for(int i=0;i<links.size();i++)
+		{
+			
+			WebElement ele= links.get(i);
+			
+			String url=ele.getAttribute("href");
+			
+			verifyLinkActive(url);
+			himel.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+			
+		}
+		
+	}
+	
+	
+	public static void verifyLinkActive(String linkUrl)
+	{
+        try 
+        {
+           URL url = new URL(linkUrl);
+           
+           HttpURLConnection httpURLConnect=(HttpURLConnection)url.openConnection();
+           
+           httpURLConnect.setConnectTimeout(3000);
+           
+           httpURLConnect.connect();
+           
+           if(httpURLConnect.getResponseCode()==200)
+           {
+               System.out.println(linkUrl+" - "+httpURLConnect.getResponseMessage());
+               
+            }
+          if(httpURLConnect.getResponseCode()==HttpURLConnection.HTTP_NOT_FOUND)  
+           {
+               System.out.println(linkUrl+" - "+httpURLConnect.getResponseMessage() + " - "+ HttpURLConnection.HTTP_NOT_FOUND);
+            }
+        } catch (Exception e) {
+           
+        }
+    } 
+	
+	
+	 
+
+}
+		
+		
+		
+//		List<WebElement>link_names=himel.findElements(By.tagName("a"));
+//		int link_count=link_names.size();
+//		System.out.println("Total number of links are: "+link_count);
 		
 		
 		//printing out all the links name
@@ -68,6 +122,4 @@ public class Google {
 		
 		
 		
-	}
-
-}
+	

@@ -28,17 +28,17 @@ public class TakingScreenshots {
 //		System.out.println(screenshotname);
 		
 		//taking the screenshot of full page
-		TakesScreenshot ts=(TakesScreenshot) driver;
-		File source=ts.getScreenshotAs(OutputType.FILE);
-		File target=new File(".//screenshots/homepage.png");
-		FileUtils.copyFile(source, target);
+//		TakesScreenshot ts=(TakesScreenshot) driver;
+//		File source=ts.getScreenshotAs(OutputType.FILE);
+//		File target=new File(".//screenshots/page.png");
+//		FileUtils.copyFile(source, target);
 		
 		
 		//taking the screenshot of portion of a page
-		WebElement section=driver.findElement(By.xpath("//span[@class='card-title brand-head-home']"));		
-		File source2=section.getScreenshotAs(OutputType.FILE);
-		File target2=new File(".//screenshots/portion.png");
-		FileUtils.copyFile(source, target2);
+//		WebElement section=driver.findElement(By.xpath("//span[@class='card-title brand-head-home']"));		
+//		File source2=section.getScreenshotAs(OutputType.FILE);
+//		File target2=new File(".//screenshots/portion.png");
+//		FileUtils.copyFile(source2, target2);
 		
 		//taking the screenshot of particular logo or an element
 		WebElement ele=driver.findElement(By.xpath("//img[@class='siteLogo']"));
